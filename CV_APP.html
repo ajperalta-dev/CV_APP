@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Agustín Peralta - Executive</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm 15mm;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+            font-size: 9pt;
+            line-height: 1.35;
+            background-color: #ffffff;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        .header-text {
+            flex: 1;
+        }
+        .name {
+            font-size: 18pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 4px 0;
+            color: #ffffff;
+        }
+        .title {
+            font-size: 9.5pt;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 8px;
+        }
+        .contact {
+            font-size: 8pt;
+            color: #cbd5e1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .profile-photo {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2.5px solid #3b82f6;
+            margin-left: 15px;
+        }
+        .section-title {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 2px;
+            margin: 10px 0 6px 0;
+        }
+        .summary {
+            background-color: #f8fafc;
+            border-left: 3px solid #2563eb;
+            padding: 8px 10px;
+            font-size: 8.5pt;
+            color: #334155;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        .item {
+            margin-bottom: 8px;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .job-title {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 9pt;
+        }
+        .company {
+            color: #1d4ed8;
+            font-weight: 600;
+        }
+        .date-loc {
+            font-size: 8pt;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        ul {
+            margin: 3px 0 0 0;
+            padding-left: 15px;
+            color: #334155;
+        }
+        li {
+            margin-bottom: 2px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 6px;
+        }
+        .card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 6px 8px;
+            margin-bottom: 6px;
+        }
+        .card-title {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 8.5pt;
+        }
+        .card-sub {
+            color: #2563eb;
+            font-size: 8pt;
+            font-weight: 600;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            margin: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-text">
+            <h1 class="name">Agustín Peralta</h1>
+            <div class="title">INGENIERO INDUSTRIAL &amp; SENIOR DATA SCIENTIST | INDUSTRY 4.0 &amp; AI TRANSFORMATION</div>
+            <div class="contact">
+                <span>📍 Barcelona, España</span>
+                <span>📞 +34 641 012 046</span>
+                <span>✉️ agustin.jorge.peraltai@gmail.com</span>
+                <span>🔗 linkedin.com/in/agustin-peralta</span>
+                <span>🪪 Nacionalidad Española</span>
+            </div>
+        </div>
+        <!-- Reemplaza 'perfil.jpg' por la ruta o nombre de tu archivo de foto -->
+        <img src="perfil.jpg" alt="Agustín Peralta" class="profile-photo" onerror="this.style.display='none'">
+    </div>
+
+    <div class="summary">
+        <strong>Perfil Profesional:</strong> Ingeniero Industrial con máster en Big Data e Inteligencia Artificial y más de 6 años de experiencia liderando la Transformación Digital e Industria 4.0 en sectores clave como energía y manufactura. Especializado en la integración de analítica avanzada, MLOps, LLMs e ingeniería de datos en producción. Destacado por una visión estratégica multicultural, liderazgo multidisciplinar y capacidad de gestión de proyectos de alto riesgo.
+    </div>
+
+    <div class="section-title">Experiencia Profesional &amp; Operativa</div>
+
+    <div class="item">
+        <div class="item-header">
+            <div><span class="job-title">Científico de Datos – Inteligencia de Negocio &amp; Analítica Avanzada</span> | <span class="company">REPSOL</span></div>
+            <div class="date-loc">Madrid, España | Jun 2024 – Feb 2025</div>
+        </div>
+        <ul>
+            <li>Desarrollo de modelos analíticos predictivos para optimización de precios, rendimiento comercial y evaluación de nuevas oportunidades de negocio en el sector energético.</li>
+            <li>Integración de pipelines de datos y dashboards ejecutivos en Power BI, reduciendo tiempos de ciclo analítico y mejorando la toma de decisiones.</li>
+            <li>Diseño e implementación de conexión directa de arquitectura Databricks con el Data Lake corporativo.</li>
+        </ul>
+    </div>
+
+    <div class="item">
+        <div class="item-header">
+            <div><span class="job-title">Data Scientist &amp; Machine Learning Engineer</span> | <span class="company">TDK ELECTRONICS</span></div>
+            <div class="date-loc">Málaga, España | Abr 2023 – Feb 2024</div>
+        </div>
+        <ul>
+            <li>Diseño y despliegue de soluciones de Machine Learning y Deep Learning aplicadas a procesos de manufactura electrónica (control de calidad, mantenimiento predictivo e inspección visual automatizada).</li>
+            <li>Desarrollo integral de LLM interno corporativo utilizando modelos open-source, LangChain e interfaz de usuario adaptativa.</li>
+            <li>Optimización y orquestación de pipelines de datos en producción utilizando Python, Apache Spark y Dagster.</li>
+        </ul>
+    </div>
+
+    <div class="item">
+        <div class="item-header">
+            <div><span class="job-title">Consultor / Profesor Especialista en Transformación Digital</span> | <span class="company">TECH UNIVERSITY</span></div>
+            <div class="date-loc">Remoto | Jun 2022 – Abr 2023</div>
+        </div>
+        <ul>
+            <li>Asesoramiento y diseño del plan curricular de Ingeniería en Organización Industrial, integrando tecnologías de la Industria 4.0 (IoT, Big Data e IA).</li>
+        </ul>
+    </div>
+
+    <div class="item">
+        <div class="item-header">
+            <div><span class="job-title">Site Manager / Company Man – Operaciones de Campo</span> | <span class="company">PAN AMERICAN ENERGY</span></div>
+            <div class="date-loc">San Jorge, Arg | Mar 2019 – Mar 2022</div>
+        </div>
+        <ul>
+            <li>Dirección operativa y presupuestaria de operaciones críticas de Well Servicing, completación y Workover en yacimientos de Petróleo &amp; Gas.</li>
+            <li>Gestión de equipos multidisciplinarios en planta/campo, logrando cero incidentes de seguridad y maximizando la disponibilidad operativa de activos.</li>
+        </ul>
+    </div>
+
+    <div class="item">
+        <div class="item-header">
+            <div><span class="job-title">Ingeniero de Proyectos y Mantenimiento</span> | <span class="company">LAFARGEHOLCIM</span></div>
+            <div class="date-loc">Argentina | Abr 2018 – Mar 2019</div>
+        </div>
+        <ul>
+            <li>Ejecución de proyectos de estandarización, relevamiento técnico y optimización de equipos críticos de despacho e infraestructura industrial.</li>
+        </ul>
+    </div>
+
+    <div class="section-title">Liderazgo Estratégico &amp; Expedición Internacional</div>
+
+    <div class="item">
+        <div class="item-header">
+            <div><span class="job-title">Líder de Expedición Trans-Asiática &amp; Consultor Independiente</span></div>
+            <div class="date-loc">Asia (China, India, Nepal, etc.) | Abr 2025 – Ago 2026</div>
+        </div>
+        <ul>
+            <li><strong>Logística Crítica &amp; Gestión de Riesgo:</strong> Primer argentino registrado en cruzar en motocicleta las 3 cordilleras más altas del mundo en itinerarios de alto riesgo, demostrando resiliencia, control de crisis y adaptabilidad cultural.</li>
+            <li><strong>Desarrollo Tecnológico:</strong> Creación autónoma de plataformas web interactivas para análisis de rutas, tracking de datos de viaje y optimización logística en tiempo real (React, Tailwind CSS, Netlify).</li>
+            <li><strong>Liderazgo &amp; Gestión del Estrés:</strong> Certificado como Instructor de Yoga (200h YTT en Rishikesh, India) y Dive Master, complementado con práctica intensiva de Tao en Wudang (China).</li>
+        </ul>
+    </div>
+
+    <div class="grid-2">
+        <div>
+            <div class="section-title" style="margin-top:0;">Educación Académica</div>
+            <div class="card">
+                <div class="card-title">MSc. en Big Data &amp; Artificial Intelligence</div>
+                <div class="card-sub">Universidad de Málaga (UMA), España (2022–2024)</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Ingeniería Industrial</div>
+                <div class="card-sub">Universidad Nacional de Cuyo, Argentina (2012–2018)</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Gestión Empresarial (Intercambio)</div>
+                <div class="card-sub">Universidad de Jaén, España (2015–2016)</div>
+            </div>
+
+            <div class="section-title">Voluntariado &amp; Impacto</div>
+            <div class="card" style="font-size: 8pt;">
+                • <strong>Scholas Occurrentes:</strong> Soporte IT social.<br>
+                • <strong>AAREII:</strong> Comisión Directiva y Congresos.<br>
+                • <strong>Rotary / Scouts:</strong> Liderazgo y desarrollo comunitario.
+            </div>
+        </div>
+
+        <div>
+            <div class="section-title" style="margin-top:0;">Certificaciones &amp; Competencias</div>
+            <div class="card">
+                <div class="card-title" style="margin-bottom:3px;">Certificaciones Tecnológicas</div>
+                <div style="font-size: 7.8pt; color: #475569;">
+                    • Microsoft Certified: Power BI Data Analyst Associate (2024)<br>
+                    • Generative AI &amp; NLP Specialization (DeepLearning.AI)<br>
+                    • Gestión de Proyectos y Metodologías Ágiles (Santander)<br>
+                    • Well Control Operator Representative (IADC)
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title" style="margin-bottom:3px;">Stack Tecnológico</div>
+                <div>
+                    <span class="badge">Python</span><span class="badge">SQL</span><span class="badge">Spark</span>
+                    <span class="badge">LangChain</span><span class="badge">LLMs / NLP</span><span class="badge">MLOps</span>
+                    <span class="badge">Dagster</span><span class="badge">AWS / Azure</span><span class="badge">Power BI</span>
+                    <span class="badge">React</span><span class="badge">Kafka</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Idiomas</div>
+                <div style="font-size: 8pt; color: #475569;">
+                    • <strong>Español:</strong> Nativo | • <strong>Inglés:</strong> Avanzado / Profesional (IELTS)
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

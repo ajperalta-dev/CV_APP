@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agustín Peralta | Industrial Engineer & Data Scientist</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#0f172a',
+            },
+            accent: {
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              violet: '#8b5cf6',
+              amber: '#f59e0b',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Chart.js for Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .light .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+    .light body {
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+    .light .text-slate-100, .light .text-slate-200, .light .text-slate-300 {
+      color: #0f172a !important;
+    }
+    .light .text-slate-400, .light .text-slate-500 {
+      color: #475569 !important;
+    }
+    .light header.glass-card {
+      background: rgba(255, 255, 255, 0.90) !important;
+    }
+    .light #experienceList::before {
+      background: #cbd5e1 !important;
+    }
+    .light input, .light textarea {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    .glow-blue {
+      box-shadow: 0 0 30px -5px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Print styling optimization - Single Page Constraint */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 6mm;
+      }
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 8.5pt !important;
+        line-height: 1.15 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      header.sticky {
+        position: static !important;
+        border: none !important;
+        padding: 0 !important;
+        margin-bottom: 6px !important;
+      }
+      main {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        gap: 8px !important;
+      }
+      .glass-card {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        padding: 8px 10px !important;
+        margin-bottom: 6px !important;
+      }
+      /* Compact spacing overrides for print */
+      h2 { font-size: 14pt !important; }
+      h3 { font-size: 11pt !important; margin-bottom: 2px !important; }
+      h4 { font-size: 9.5pt !important; }
+      p, li, span, a { font-size: 8.5pt !important; }
+      
+      #about {
+        padding: 10px !important;
+        margin-bottom: 6px !important;
+      }
+      #about img {
+        width: 70px !important;
+        height: 70px !important;
+      }
+      #experienceList {
+        padding-left: 12px !important;
+        margin-top: 4px !important;
+      }
+      #experienceList .job-card {
+        margin-bottom: 6px !important;
+      }
+      #experienceList .job-card .glass-card {
+        padding: 6px 8px !important;
+      }
+      /* Ensure grid columns pack tightly */
+      .grid {
+        gap: 6px !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 light:bg-slate-50 light:text-slate-800">
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="sticky top-0 z-40 w-full glass-card border-b border-slate-800/80 bg-slate-950/80 dark:bg-slate-950/80 light:bg-white/80 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Identity -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 to-accent-cyan p-0.5 flex items-center justify-center text-white font-bold text-sm shadow-md">
+            <span>AP</span>
+          </div>
+          <div>
+            <h1 class="font-bold text-slate-100 dark:text-slate-100 light:text-slate-900 text-sm sm:text-base leading-tight">AGUSTÍN PERALTA</h1>
+            <p class="text-xs text-brand-400 font-medium">Industrial Engineer & Data Scientist</p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-1 text-xs sm:text-sm font-medium">
+          <a href="#about" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition">About</a>
+          <a href="#experience" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition">Experience</a>
+          <a href="#skills" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition">Tech Stack</a>
+          <a href="#projects" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition">Projects</a>
+          <a href="#education" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition">Education</a>
+          <a href="#terminal" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition"><i class="fa-solid fa-terminal mr-1"></i>CLI</a>
+        </nav>
+
+        <!-- Action Controls -->
+        <div class="flex items-center gap-2">
+          <!-- Edit Toggle -->
+          <button id="toggleEditBtn" onclick="toggleEditMode()" title="Toggle Edit Mode" class="p-2 rounded-lg bg-slate-900 dark:bg-slate-900 light:bg-slate-200 border border-slate-700/60 hover:border-brand-500 text-slate-300 hover:text-white text-xs sm:text-sm flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-pen-to-square text-brand-400"></i>
+            <span class="hidden sm:inline" id="editBtnText">Edit CV</span>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button onclick="toggleTheme()" title="Switch Theme" class="p-2.5 rounded-lg bg-slate-900 dark:bg-slate-900 light:bg-slate-200 border border-slate-700/60 hover:border-brand-500 text-slate-300 hover:text-white transition">
+            <i class="fa-solid fa-sun dark:inline hidden text-amber-400"></i>
+            <i class="fa-solid fa-moon dark:hidden inline text-indigo-600"></i>
+          </button>
+
+          <!-- Export PDF -->
+          <button onclick="exportToPDF()" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-brand-600 to-blue-700 hover:from-brand-500 hover:to-blue-600 text-white font-medium text-xs sm:text-sm shadow-md flex items-center gap-2 transition active:scale-95">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span class="hidden sm:inline">Export PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+    <!-- Hero Section -->
+    <section id="about" class="relative overflow-hidden rounded-3xl glass-card p-6 sm:p-10 border border-slate-800 glow-blue">
+      <!-- Glow background accents -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-600/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        <!-- Avatar Photo with Ring Effect -->
+        <div class="relative group">
+          <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden ring-4 ring-brand-500 p-1 bg-slate-900 shadow-2xl relative">
+            <img id="profileImage" src="avatar_circular.png" alt="Agustín Peralta" class="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=Agust%C3%ADn+Peralta'">
+          </div>
+          <div class="absolute bottom-2 right-2 bg-slate-900 border border-slate-700 px-3 py-1 rounded-full flex items-center gap-1.5 text-xs font-semibold text-accent-emerald shadow-lg">
+            <span class="w-2 h-2 rounded-full bg-accent-emerald animate-ping"></span>
+            <span>Available</span>
+          </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="flex-1 text-center lg:text-left space-y-4">
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2">
+            <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">
+              <i class="fa-solid fa-microchip mr-1"></i> Industry 4.0 & AI Transformation
+            </span>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <i class="fa-solid fa-location-dot mr-1"></i> Barcelona, Spain
+            </span>
+          </div>
+
+          <div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-100 dark:text-slate-100 light:text-slate-900 tracking-tight">
+              AGUSTÍN PERALTA
+            </h2>
+            <p class="text-lg sm:text-xl text-brand-400 font-semibold mt-1">
+              Industrial Engineer & Data Scientist
+            </p>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-300 dark:text-slate-300 light:text-slate-700 leading-relaxed max-w-3xl edit-field" contenteditable="false">
+            Industrial Engineer with a Master's degree in Big Data and Artificial Intelligence and over 6 years of experience integrating industrial operations, strategic leadership, robust Data Engineering pipelines, modern frontend web solutions, and applied Artificial Intelligence.
+          </p>
+
+          <!-- Key Metrics -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center">
+              <span class="block text-2xl font-bold text-brand-400">+6</span>
+              <span class="text-xs text-slate-400">Years Experience</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center">
+              <span class="block text-2xl font-bold text-accent-cyan">MSc</span>
+              <span class="text-xs text-slate-400">Big Data & AI</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center">
+              <span class="block text-2xl font-bold text-accent-emerald">Data & Cloud</span>
+              <span class="text-xs text-slate-400">Architecture Expert</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center">
+              <span class="block text-2xl font-bold text-accent-violet">C1</span>
+              <span class="text-xs text-slate-400">English (IELTS)</span>
+            </div>
+          </div>
+
+          <!-- Contact buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2 no-print">
+            <a href="mailto:agustin.jorge.peraltai@gmail.com" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-800 border border-slate-700 light:border-slate-300 text-slate-200 text-xs sm:text-sm font-medium flex items-center gap-2 transition">
+              <i class="fa-solid fa-envelope text-brand-400"></i> agustin.jorge.peraltai@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/agustin-peralta-356b41a0/" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-800 border border-slate-700 light:border-slate-300 text-slate-200 text-xs sm:text-sm font-medium flex items-center gap-2 transition">
+              <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Profile
+            </a>
+            <button onclick="copyPhone()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-800 border border-slate-700 light:border-slate-300 text-slate-200 text-xs sm:text-sm font-medium flex items-center gap-2 transition">
+              <i class="fa-solid fa-phone text-emerald-400"></i> +34 641 012 046
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Assistant Query Widget -->
+    <section class="glass-card rounded-2xl p-5 border border-slate-800/80 bg-gradient-to-r from-slate-900/90 via-blue-950/30 to-slate-900/90 no-print">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-600/20 border border-brand-500/40 flex items-center justify-center text-brand-400">
+            <i class="fa-solid fa-wand-magic-sparkles text-lg animate-pulse"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-100 text-sm sm:text-base">Agustín's Interactive CV Assistant</h3>
+            <p class="text-xs text-slate-400">Ask a quick query to explore Agustin's background and skill fit</p>
+          </div>
+        </div>
+
+        <div class="w-full md:w-auto flex flex-1 max-w-md items-center gap-2">
+          <div class="relative w-full">
+            <input type="text" id="aiQueryInput" placeholder="e.g. Data Engineering, Databricks, React frontend" class="w-full pl-9 pr-4 py-2 bg-slate-950/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-brand-500 transition">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-500 text-xs"></i>
+          </div>
+          <button onclick="queryCVAssistant()" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs sm:text-sm font-medium transition whitespace-nowrap">
+            Query
+          </button>
+        </div>
+      </div>
+
+      <!-- Preset Prompts -->
+      <div class="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+        <span class="text-slate-500 font-medium">Quick Prompts:</span>
+        <button onclick="runQuickQuery('data')" class="px-2.5 py-1 rounded-lg bg-slate-800/60 hover:bg-brand-600/30 border border-slate-700/50 text-slate-300 transition">
+          🗄️ Data Engineering & Databricks
+        </button>
+        <button onclick="runQuickQuery('frontend')" class="px-2.5 py-1 rounded-lg bg-slate-800/60 hover:bg-brand-600/30 border border-slate-700/50 text-slate-300 transition">
+          💻 Frontend & Web Apps
+        </button>
+        <button onclick="runQuickQuery('repsol')" class="px-2.5 py-1 rounded-lg bg-slate-800/60 hover:bg-brand-600/30 border border-slate-700/50 text-slate-300 transition">
+          ⚡ Repsol & Pipelines
+        </button>
+        <button onclick="runQuickQuery('wellness')" class="px-2.5 py-1 rounded-lg bg-slate-800/60 hover:bg-brand-600/30 border border-slate-700/50 text-slate-300 transition">
+          🧘 Yoga & Leadership
+        </button>
+      </div>
+
+      <!-- Assistant response display -->
+      <div id="aiResponseBox" class="hidden mt-3 p-3.5 rounded-xl bg-slate-950/90 border border-brand-500/30 text-xs sm:text-sm text-slate-200 flex items-start gap-3">
+        <i class="fa-solid fa-robot text-brand-400 text-base mt-0.5"></i>
+        <div id="aiResponseText" class="leading-relaxed"></div>
+      </div>
+    </section>
+
+    <!-- Section: Experience & Education Timeline -->
+    <div id="experience" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Experience Column (2/3) -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-100 dark:text-slate-100 light:text-slate-900">Professional Experience</h3>
+          </div>
+          <button onclick="addNewExperience()" class="no-print hidden edit-mode-only text-xs px-2.5 py-1 rounded-lg bg-brand-600 text-white font-medium hover:bg-brand-500 transition">
+            + Add Position
+          </button>
+        </div>
+
+        <div id="experienceList" class="relative pl-6 space-y-8 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-800">
+
+          <!-- Job 1: REPSOL -->
+          <div class="relative group job-card">
+            <div class="absolute -left-[1.85rem] top-1.5 w-4 h-4 rounded-full bg-brand-500 ring-4 ring-slate-950 dark:ring-slate-950 light:ring-white"></div>
+            <div class="glass-card rounded-2xl p-5 border border-slate-800/80 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-100 edit-field" contenteditable="false">Data Scientist & Data Engineer</h4>
+                  <p class="text-sm text-brand-400 font-semibold edit-field" contenteditable="false">REPSOL — Madrid, Spain</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-mono font-medium rounded-full bg-slate-800 border border-slate-700 text-slate-300 edit-field" contenteditable="false">Jun 2024 — Feb 2025</span>
+              </div>
+              <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-2">
+                <li>Design and implementation of robust Data Engineering pipelines connecting Databricks directly to corporate Data Lakes for automated feature ingestion.</li>
+                <li>Development of predictive analytical models for price optimization, commercial performance, and evaluation of new business opportunities in the energy sector.</li>
+                <li>Deployment of enterprise-grade Power BI dashboards and semantic data models, optimizing strategic decision-making and reducing analytical cycle times.</li>
+              </ul>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Python</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Databricks</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Apache Spark</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Power BI</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 2: TDK ELECTRONICS -->
+          <div class="relative group job-card">
+            <div class="absolute -left-[1.85rem] top-1.5 w-4 h-4 rounded-full bg-accent-cyan ring-4 ring-slate-950 dark:ring-slate-950 light:ring-white"></div>
+            <div class="glass-card rounded-2xl p-5 border border-slate-800/80 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-100 edit-field" contenteditable="false">Data Scientist & MLOps / Data Engineer</h4>
+                  <p class="text-sm text-accent-cyan font-semibold edit-field" contenteditable="false">TDK ELECTRONICS — Málaga, Spain</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-mono font-medium rounded-full bg-slate-800 border border-slate-700 text-slate-300 edit-field" contenteditable="false">Apr 2023 — Feb 2024</span>
+              </div>
+              <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-2">
+                <li>Design and deployment of scalable ETL/ELT data pipelines using Python, Spark, and workflow orchestration with Dagster to process manufacturing telemetry.</li>
+                <li>Deployment of internal corporate LLM interfaces with LangChain, containerized services, and responsive frontend UI dashboards for operators.</li>
+                <li>Design of ML and Deep Learning solutions applied to high-precision electronics manufacturing, quality control, and predictive maintenance.</li>
+              </ul>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Dagster</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Spark & SQL</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">LangChain</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 3: TECH UNIVERSITY -->
+          <div class="relative group job-card">
+            <div class="absolute -left-[1.85rem] top-1.5 w-4 h-4 rounded-full bg-accent-violet ring-4 ring-slate-950 dark:ring-slate-950 light:ring-white"></div>
+            <div class="glass-card rounded-2xl p-5 border border-slate-800/80 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-100 edit-field" contenteditable="false">Consultant / Specialist Professor</h4>
+                  <p class="text-sm text-accent-violet font-semibold edit-field" contenteditable="false">TECH UNIVERSITY — Remote</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-mono font-medium rounded-full bg-slate-800 border border-slate-700 text-slate-300 edit-field" contenteditable="false">Jun 2022 — Apr 2023</span>
+              </div>
+              <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-2">
+                <li>Advising and curriculum design for Industrial Organization Engineering, integrating modern data architectures, cloud telemetry, and AI systems.</li>
+              </ul>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Industry 4.0</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Data Architecture</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Curriculum Design</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 4: PAN AMERICAN ENERGY -->
+          <div class="relative group job-card">
+            <div class="absolute -left-[1.85rem] top-1.5 w-4 h-4 rounded-full bg-accent-emerald ring-4 ring-slate-950 dark:ring-slate-950 light:ring-white"></div>
+            <div class="glass-card rounded-2xl p-5 border border-slate-800/80 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-100 edit-field" contenteditable="false">Site Manager / Company Man</h4>
+                  <p class="text-sm text-accent-emerald font-semibold edit-field" contenteditable="false">PAN AMERICAN ENERGY — Argentina</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-mono font-medium rounded-full bg-slate-800 border border-slate-700 text-slate-300 edit-field" contenteditable="false">Mar 2019 — Mar 2022</span>
+              </div>
+              <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-2">
+                <li>Operational and budgetary management of critical Well Servicing, completion, and Workover operations in Oil & Gas fields.</li>
+                <li>Digitalization of field reports and metrics collection, transitioning legacy logs into centralized relational SQL structures.</li>
+              </ul>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Operations Management</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Data Reporting</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">HSE / Safety</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 5: LAFARGE-HOLCIM -->
+          <div class="relative group job-card">
+            <div class="absolute -left-[1.85rem] top-1.5 w-4 h-4 rounded-full bg-amber-500 ring-4 ring-slate-950 dark:ring-slate-950 light:ring-white"></div>
+            <div class="glass-card rounded-2xl p-5 border border-slate-800/80 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-100 edit-field" contenteditable="false">Project and Maintenance Engineer</h4>
+                  <p class="text-sm text-amber-400 font-semibold edit-field" contenteditable="false">LAFARGE-HOLCIM — Argentina</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-mono font-medium rounded-full bg-slate-800 border border-slate-700 text-slate-300 edit-field" contenteditable="false">Apr 2018 — Mar 2019</span>
+              </div>
+              <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-2">
+                <li>Execution of industrial standardization projects, telemetry surveying, and maintenance database optimization for heavy machinery.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 6: Asia Expedition & Tech Consultant -->
+          <div class="relative group job-card">
+            <div class="absolute -left-[1.85rem] top-1.5 w-4 h-4 rounded-full bg-indigo-500 ring-4 ring-slate-950 dark:ring-slate-950 light:ring-white"></div>
+            <div class="glass-card rounded-2xl p-5 border border-slate-800/80 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-100 edit-field" contenteditable="false">Independent Tech Consultant & Full-Stack Developer</h4>
+                  <p class="text-sm text-indigo-400 font-semibold edit-field" contenteditable="false">Personal Expedition & Digital Platforms — Asia</p>
+                </div>
+                <span class="px-3 py-1 text-xs font-mono font-medium rounded-full bg-slate-800 border border-slate-700 text-slate-300 edit-field" contenteditable="false">Apr 2025 — Aug 2026</span>
+              </div>
+              <ul class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-2">
+                <li><strong>Frontend & Web Engineering:</strong> Development of high-performance, responsive single-page web applications and interactive mapping platforms using React, Tailwind CSS, JavaScript ES6+, and modern component architecture.</li>
+                <li><strong>Cloud & Deployment:</strong> Continuous integration and rapid global deployment pipelines via Netlify and Vercel with optimized asset bundling.</li>
+              </ul>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">React</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Tailwind CSS</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">JavaScript</span>
+                <span class="px-2.5 py-0.5 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">Netlify / Vercel</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column Sidebar: Certifications, Languages, Leadership & Yoga -->
+      <div class="space-y-6">
+
+        <!-- Education Card -->
+        <div id="education" class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-2 border-b border-slate-800">
+            <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-100">Academic Education</h3>
+          </div>
+
+          <div class="space-y-4 text-xs sm:text-sm">
+            <div>
+              <h4 class="font-bold text-slate-100 edit-field" contenteditable="false">MSc. in Big Data & Artificial Intelligence</h4>
+              <p class="text-brand-400 edit-field" contenteditable="false">Univ. of Málaga (UMA), Spain</p>
+              <span class="text-xs text-slate-400">2022 — 2024</span>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800/60">
+              <h4 class="font-bold text-slate-100 edit-field" contenteditable="false">Industrial Engineering</h4>
+              <p class="text-accent-cyan edit-field" contenteditable="false">Universidad Nacional de Cuyo, Argentina</p>
+              <span class="text-xs text-slate-400">2012 — 2018</span>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800/60">
+              <h4 class="font-bold text-slate-100 edit-field" contenteditable="false">Business Management (Exchange Program)</h4>
+              <p class="text-amber-400 edit-field" contenteditable="false">Universidad de Jaén, Spain</p>
+              <span class="text-xs text-slate-400">2015 — 2016</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications Card -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-2 border-b border-slate-800">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-100">Certifications</h3>
+          </div>
+
+          <ul class="space-y-3 text-xs sm:text-sm">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-award text-emerald-400 mt-0.5"></i>
+              <div>
+                <span class="font-semibold text-slate-200 block">Microsoft Certified: Power BI Data Analyst Associate</span>
+                <span class="text-xs text-slate-400">Microsoft (2024)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-award text-emerald-400 mt-0.5"></i>
+              <div>
+                <span class="font-semibold text-slate-200 block">Generative AI & NLP Specialization</span>
+                <span class="text-xs text-slate-400">DeepLearning.AI (2024)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-award text-emerald-400 mt-0.5"></i>
+              <div>
+                <span class="font-semibold text-slate-200 block">Project Management & Agile Methodology</span>
+                <span class="text-xs text-slate-400">Santander Academy (2024)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-award text-emerald-400 mt-0.5"></i>
+              <div>
+                <span class="font-semibold text-slate-200 block">Well Control Operator Rep.</span>
+                <span class="text-xs text-slate-400">IADC (2019, 2021)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Languages Card -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-2 border-b border-slate-800">
+            <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 border border-accent-cyan/30 flex items-center justify-center text-accent-cyan">
+              <i class="fa-solid fa-language"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-100">Languages</h3>
+          </div>
+
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div>
+              <div class="flex justify-between font-medium mb-1">
+                <span class="text-slate-200">Spanish</span>
+                <span class="text-slate-400">Native</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-brand-500 rounded-full w-full"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-medium mb-1">
+                <span class="text-slate-200">English</span>
+                <span class="text-slate-400">Advanced / C1 (IELTS)</span>
+              </div>
+              <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-brand-500 rounded-full w-[90%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leadership & Personal Practices Card -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-2 border-b border-slate-800">
+            <div class="w-8 h-8 rounded-lg bg-accent-violet/10 border border-accent-violet/30 flex items-center justify-center text-accent-violet">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-100">Leadership & Wellness</h3>
+          </div>
+
+          <div class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+            <p class="flex items-center gap-2">
+              <span class="text-base">🧘‍♂️</span> <strong>200h Yoga Teacher Training</strong> (Rishikesh, India, 2026)
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="text-base">🤿</span> <strong>Dive Master</strong>
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="text-base">☯️</span> <strong>Tai Chi & Taoist Practice</strong> (Wudang, China, 2026)
+            </p>
+          </div>
+        </div>
+
+        <!-- Volunteering Card -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2 text-sm font-bold text-slate-200 pb-1 border-b border-slate-800">
+            <i class="fa-solid fa-hand-holding-heart text-rose-400"></i> Volunteering & Community
+          </div>
+          <ul class="text-xs space-y-2 text-slate-300">
+            <li><strong>Scholas Occurrentes (2024-Present):</strong> IT support and social impact tech.</li>
+            <li><strong>AAREII (2013-2015):</strong> Board of Directors, organizing student congresses.</li>
+            <li><strong>Rotary International & Scouts:</strong> Community leadership.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Section: Technical Stack & Interactive Skill Analytics -->
+    <section id="skills" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-accent-violet/10 border border-accent-violet/30 flex items-center justify-center text-accent-violet">
+            <i class="fa-solid fa-code text-sm"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-100">Technical Stack Matrix</h3>
+            <p class="text-xs text-slate-400">Core technologies and professional tools grouped by domain</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simplified Clean Grid grouped by domain -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Data Eng & Cloud -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 pb-2 border-b border-slate-800 text-brand-400 font-bold text-sm">
+            <i class="fa-solid fa-database"></i> Data & Cloud
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-center justify-between"><span>Databricks & Delta</span> <span class="text-xs text-brand-400 font-mono">98%</span></li>
+            <li class="flex items-center justify-between"><span>Apache Spark</span> <span class="text-xs text-brand-400 font-mono">96%</span></li>
+            <li class="flex items-center justify-between"><span>ETL/ELT Pipelines</span> <span class="text-xs text-brand-400 font-mono">97%</span></li>
+            <li class="flex items-center justify-between"><span>Dagster / Airflow</span> <span class="text-xs text-brand-400 font-mono">94%</span></li>
+            <li class="flex items-center justify-between"><span>SQL & Databases</span> <span class="text-xs text-brand-400 font-mono">98%</span></li>
+            <li class="flex items-center justify-between"><span>Azure / AWS Cloud</span> <span class="text-xs text-brand-400 font-mono">95%</span></li>
+            <li class="flex items-center justify-between"><span>Power BI</span> <span class="text-xs text-brand-400 font-mono">98%</span></li>
+          </ul>
+        </div>
+
+        <!-- Frontend & Web -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 pb-2 border-b border-slate-800 text-accent-cyan font-bold text-sm">
+            <i class="fa-solid fa-laptop-code"></i> Frontend & Web
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-center justify-between"><span>React.js</span> <span class="text-xs text-accent-cyan font-mono">94%</span></li>
+            <li class="flex items-center justify-between"><span>Tailwind CSS</span> <span class="text-xs text-accent-cyan font-mono">96%</span></li>
+            <li class="flex items-center justify-between"><span>JavaScript (ES6+)</span> <span class="text-xs text-accent-cyan font-mono">95%</span></li>
+            <li class="flex items-center justify-between"><span>SPAs & UI Arch</span> <span class="text-xs text-accent-cyan font-mono">92%</span></li>
+            <li class="flex items-center justify-between"><span>Netlify / Vercel</span> <span class="text-xs text-accent-cyan font-mono">94%</span></li>
+            <li class="flex items-center justify-between"><span>HTML5 / DOM</span> <span class="text-xs text-accent-cyan font-mono">95%</span></li>
+          </ul>
+        </div>
+
+        <!-- AI / ML / LLMs -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 pb-2 border-b border-slate-800 text-accent-violet font-bold text-sm">
+            <i class="fa-solid fa-brain"></i> AI & ML / LLMs
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-center justify-between"><span>Python / Pandas</span> <span class="text-xs text-accent-violet font-mono">98%</span></li>
+            <li class="flex items-center justify-between"><span>Machine Learning</span> <span class="text-xs text-accent-violet font-mono">96%</span></li>
+            <li class="flex items-center justify-between"><span>LLMs & LangChain</span> <span class="text-xs text-accent-violet font-mono">97%</span></li>
+            <li class="flex items-center justify-between"><span>Computer Vision</span> <span class="text-xs text-accent-violet font-mono">92%</span></li>
+          </ul>
+        </div>
+
+        <!-- Industrial Ops -->
+        <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 pb-2 border-b border-slate-800 text-accent-emerald font-bold text-sm">
+            <i class="fa-solid fa-industry"></i> Industrial Ops
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-center justify-between"><span>Industrial Ops</span> <span class="text-xs text-accent-emerald font-mono">98%</span></li>
+            <li class="flex items-center justify-between"><span>HSE & Safety</span> <span class="text-xs text-accent-emerald font-mono">96%</span></li>
+            <li class="flex items-center justify-between"><span>Project Mgmt</span> <span class="text-xs text-accent-emerald font-mono">95%</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: Featured Projects -->
+    <section id="projects" class="space-y-6">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 border border-accent-cyan/30 flex items-center justify-center text-accent-cyan">
+            <i class="fa-solid fa-compass"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-100">Featured Projects</h3>
+            <p class="text-xs text-slate-400">Deployed solutions, software tools, and digital platforms</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Project 1 -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-slate-800 group hover:border-brand-500/50 transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative h-44 overflow-hidden bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=600" alt="Routes & Interactive Geo-Tracking App" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Geo-Tracking+App'">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-brand-600/90 text-white backdrop-blur-md">
+                2026 Web Platform
+              </span>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <h4 class="text-lg font-bold text-slate-100 group-hover:text-brand-400 transition">
+                Routes & Interactive Geo-Tracking App
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Interactive web platform deployed on Netlify for analytical visualization of travel routes, high-risk overland itineraries, and international expeditions.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">React</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">Tailwind CSS</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">Netlify</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">GeoAnalytics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0 no-print flex items-center justify-between border-t border-slate-800/60 mt-3 pt-3">
+            <button onclick="openProjectModal('geo-tracking')" class="text-xs font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
+              View Details <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-slate-800 group hover:border-brand-500/50 transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative h-44 overflow-hidden bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="MINNER ASSURER" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=MINNER+ASSURER'">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-cyan/90 text-white backdrop-blur-md">
+                Mining Analytics (2024)
+              </span>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <h4 class="text-lg font-bold text-slate-100 group-hover:text-accent-cyan transition">
+                MINNER ASSURER Software
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Desktop analytical software built in Python and SQL for geological data exploration, risk evaluation, and quality assurance in mining consulting.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">Python</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">SQL</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">Geological Data</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0 no-print flex items-center justify-between border-t border-slate-800/60 mt-3 pt-3">
+            <button onclick="openProjectModal('minner-assurer')" class="text-xs font-semibold text-accent-cyan hover:text-cyan-300 flex items-center gap-1">
+              View Details <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-slate-800 group hover:border-brand-500/50 transition duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative h-44 overflow-hidden bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" alt="Corporate Internal LLM Engine" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Corporate+LLM'">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-violet/90 text-white backdrop-blur-md">
+                Industry 4.0 AI
+              </span>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <h4 class="text-lg font-bold text-slate-100 group-hover:text-accent-violet transition">
+                Corporate Internal LLM Engine
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Customized open-source LLM solution with LangChain for high-precision electronics manufacturing and automated visual inspection at TDK Electronics.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">LangChain</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">LLMs</span>
+                <span class="px-2 py-0.5 text-xs rounded bg-slate-800 border border-slate-700 text-slate-300">Dagster</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0 no-print flex items-center justify-between border-t border-slate-800/60 mt-3 pt-3">
+            <button onclick="openProjectModal('tdk-llm')" class="text-xs font-semibold text-accent-violet hover:text-violet-300 flex items-center gap-1">
+              View Details <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Data & AI CLI Terminal -->
+    <section id="terminal" class="glass-card rounded-2xl p-5 border border-slate-800/90 font-mono text-xs shadow-2xl no-print">
+      <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-slate-400">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+          <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+          <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+          <span class="ml-2 font-bold text-slate-300">agustin-peralta-terminal ~ v2.026</span>
+        </div>
+        <span class="text-slate-500 text-[10px]">Type <code class="text-brand-400 font-bold">help</code> for commands</span>
+      </div>
+
+      <div id="terminalOutput" class="h-36 overflow-y-auto space-y-1.5 mb-3 text-slate-300 pr-2">
+        <div class="text-emerald-400">Agustín Peralta OS Shell initialized. Welcome!</div>
+        <div class="text-slate-400">Type 'help', 'bio', 'skills', 'experience', 'certs', or 'contact' to interact.</div>
+      </div>
+
+      <form onsubmit="handleTerminalInput(event)" class="flex items-center gap-2 pt-2 border-t border-slate-800">
+        <span class="text-brand-400 font-bold">ap-shell:$</span>
+        <input type="text" id="terminalPrompt" placeholder="enter command..." class="bg-transparent flex-1 focus:outline-none text-slate-100 font-mono text-xs">
+        <button type="submit" class="px-3 py-1 bg-brand-600 hover:bg-brand-500 text-white rounded font-mono text-xs">Execute</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Agustín Peralta — Industrial Engineer & Data Scientist</p>
+      <div class="flex items-center gap-4">
+        <a href="#about" class="hover:text-slate-300 transition">About</a>
+        <a href="#experience" class="hover:text-slate-300 transition">Experience</a>
+        <a href="#skills" class="hover:text-slate-300 transition">Skills</a>
+        <a href="javascript:window.scrollTo({top:0, behavior:'smooth'})" class="hover:text-slate-300 transition"><i class="fa-solid fa-arrow-up"></i> Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Message -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none px-4 py-3 rounded-xl bg-slate-900 border border-brand-500 text-slate-100 text-xs sm:text-sm font-medium shadow-2xl flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toastMsg">Action completed successfully</span>
+  </div>
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4 no-print">
+    <div class="glass-card max-w-2xl w-full rounded-2xl border border-slate-800 p-6 space-y-4 max-h-[90vh] overflow-y-auto relative">
+      <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-900/80">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <h3 id="modalTitle" class="text-2xl font-bold text-slate-100">Project Title</h3>
+      <p id="modalDescription" class="text-sm text-slate-300 leading-relaxed"></p>
+      <div class="space-y-2 pt-2">
+        <h4 class="text-xs uppercase font-bold text-slate-400">Key Achievements & Impact:</h4>
+        <ul id="modalMetrics" class="list-disc list-inside text-xs sm:text-sm text-slate-300 space-y-1"></ul>
+      </div>
+      <div class="pt-4 flex justify-end">
+        <button onclick="closeProjectModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Protection Modal for Edit CV -->
+  <div id="passwordModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4 no-print">
+    <div class="glass-card max-w-md w-full rounded-2xl border border-slate-800 p-6 space-y-4 relative shadow-2xl">
+      <button onclick="closePasswordModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-900/80">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-500/20 border border-brand-500/40 flex items-center justify-center text-brand-400">
+          <i class="fa-solid fa-lock text-lg"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-100">CV Edit Access</h3>
+          <p class="text-xs text-slate-400">Enter password to enable edit mode</p>
+        </div>
+      </div>
+      <div class="space-y-2 pt-2">
+        <input type="password" id="cvPasswordInput" placeholder="Enter password..." onkeydown="if(event.key === 'Enter') verifyPassword()" class="w-full px-4 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-brand-500 transition">
+        <p id="passwordError" class="text-xs text-rose-400 hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> Incorrect password. (Try: admin)</p>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closePasswordModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition">Cancel</button>
+        <button onclick="verifyPassword()" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-semibold transition">Unlock</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Project details dataset for modals
+    const projectDetails = {
+      'geo-tracking': {
+        title: 'Routes & Interactive Geo-Tracking App',
+        description: 'Interactive web platform deployed on Netlify for analytical visualization of travel routes, high-risk overland itineraries, and international expeditions across Asia.',
+        metrics: [
+          'Developed responsive React & Tailwind UI with smooth navigation and component architecture.',
+          'Integrated geo-analytical mapping tools for route optimization and risk tracking.',
+          'Optimized asset loading and cloud deployment pipelines.'
+        ]
+      },
+      'minner-assurer': {
+        title: 'MINNER ASSURER Software',
+        description: 'Desktop analytical software built in Python and SQL for geological data exploration, risk evaluation, and quality assurance in mining consulting.',
+        metrics: [
+          'Automated geological data cleaning and processing routines.',
+          'Built robust reporting tools for risk evaluation and quality assessment.',
+          'Integrated high-performance SQL query handlers.'
+        ]
+      },
+      'tdk-llm': {
+        title: 'Corporate Internal LLM Engine',
+        description: 'Customized open-source LLM solution with LangChain for high-precision electronics manufacturing and automated visual inspection at TDK Electronics.',
+        metrics: [
+          'Deployed open-source LLMs locally with optimized inference pipelines.',
+          'Integrated LangChain for context-aware corporate document retrieval.',
+          'Orchestrated automated data pipelines using Dagster and Spark.'
+        ]
+      }
+    };
+
+    // Initialize UI on window load
+    window.onload = function() {
+      // Safe check for radar chart element if present
+      const canvasEl = document.getElementById('skillsRadarChart');
+      if (canvasEl) {
+        initRadarChart();
+      }
+    };
+
+    let chartInstance = null;
+
+    function initRadarChart() {
+      const canvas = document.getElementById('skillsRadarChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+      chartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Data Eng & Cloud', 'Frontend & Web', 'AI & ML / LLMs', 'Industrial Ops', 'MLOps & Pipelines', 'Leadership & HSE'],
+          datasets: [{
+            label: 'Proficiency Level',
+            data: [97, 95, 97, 98, 93, 96],
+            backgroundColor: 'rgba(59, 130, 246, 0.35)',
+            borderColor: '#3b82f6',
+            borderWidth: 3,
+            pointBackgroundColor: '#06b6d4',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#3b82f6',
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              grid: { color: 'rgba(255, 255, 255, 0.15)' },
+              angleLines: { color: 'rgba(255, 255, 255, 0.15)' },
+              ticks: { display: false, max: 100, min: 0 }
+            }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        showToast('Switched to Light Theme');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        showToast('Switched to Dark Theme');
+      }
+    }
+
+    function exportToPDF() {
+      // Reemplaza esta ruta con la URL real de tu archivo PDF
+      const pdfUrl = 'CV_Agustin_Peralta_2026_EN.pdf';
+      
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      
+      // El atributo 'download' sugiere al navegador descargar el archivo en lugar de abrirlo
+      link.download = 'nombre-del-archivo.pdf'; 
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    let isEditMode = false;
+    const CV_PASSWORD = "admin"; // Default password for editing
+
+    function toggleEditMode() {
+      if (isEditMode) {
+        setEditMode(false);
+      } else {
+        openPasswordModal();
+      }
+    }
+
+    function openPasswordModal() {
+      const modal = document.getElementById('passwordModal');
+      const input = document.getElementById('cvPasswordInput');
+      const err = document.getElementById('passwordError');
+      input.value = '';
+      err.classList.add('hidden');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => input.focus(), 100);
+    }
+
+    function closePasswordModal() {
+      const modal = document.getElementById('passwordModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function verifyPassword() {
+      const input = document.getElementById('cvPasswordInput').value;
+      const err = document.getElementById('passwordError');
+      
+      if (input === CV_PASSWORD) {
+        closePasswordModal();
+        setEditMode(true);
+      } else {
+        err.classList.remove('hidden');
+      }
+    }
+
+    function setEditMode(state) {
+      isEditMode = state;
+      const editableFields = document.querySelectorAll('.edit-field');
+      const editBtnText = document.getElementById('editBtnText');
+
+      editableFields.forEach(field => {
+        field.contentEditable = isEditMode ? 'true' : 'false';
+        if (isEditMode) {
+          field.classList.add('ring-2', 'ring-brand-500/50', 'rounded', 'p-1', 'bg-slate-900/40');
+        } else {
+          field.classList.remove('ring-2', 'ring-brand-500/50', 'rounded', 'p-1', 'bg-slate-900/40');
+        }
+      });
+
+      if (isEditMode) {
+        editBtnText.innerText = 'Save Changes';
+        showToast('Edit Mode Enabled: Click text fields to edit');
+      } else {
+        editBtnText.innerText = 'Edit CV';
+        showToast('Changes Saved!');
+      }
+    }
+
+    function queryCVAssistant() {
+      const query = document.getElementById('aiQueryInput').value.toLowerCase().trim();
+      if (!query) return;
+      runQuickQuery(query);
+    }
+
+    function runQuickQuery(topic) {
+      const responseBox = document.getElementById('aiResponseBox');
+      const responseText = document.getElementById('aiResponseText');
+      responseBox.classList.remove('hidden');
+
+      const lower = topic.toLowerCase();
+      if (lower.includes('data') || lower.includes('databricks') || lower.includes('spark')) {
+        responseText.innerHTML = '<strong>Data Engineering & Cloud:</strong> Agustín specializes in building scalable ETL/ELT pipelines using Databricks Delta Architecture, PySpark, Dagster, and Azure/AWS cloud lakes, turning raw enterprise telemetry into high-performance datasets.';
+      } else if (lower.includes('frontend') || lower.includes('react') || lower.includes('tailwind') || lower.includes('web')) {
+        responseText.innerHTML = '<strong>Frontend & Web Engineering:</strong> Experienced in developing modern single-page web applications (SPAs) and interactive dashboards using React.js, Tailwind CSS, and ES6+ JavaScript, deployed seamlessly via Netlify & Vercel.';
+      } else if (lower.includes('repsol')) {
+        responseText.innerHTML = '<strong>Repsol Experience:</strong> Developed direct Databricks-to-Data Lake ingestion pipelines, commercial pricing models, and executive Power BI semantic data models.';
+      } else if (lower.includes('wellness') || lower.includes('yoga')) {
+        responseText.innerHTML = '<strong>Leadership & Wellness:</strong> Certified 200h Yoga Teacher (Rishikesh, India, 2026), Dive Master, and Tai Chi practitioner.';
+      } else {
+        responseText.innerHTML = `<strong>Summary for "${topic}":</strong> Agustín Peralta brings deep expertise across Data Engineering, Cloud Infrastructure, Frontend Development, and Industrial AI transformation.`;
+      }
+    }
+
+    function handleTerminalInput(e) {
+      e.preventDefault();
+      const promptInput = document.getElementById('terminalPrompt');
+      const outputBox = document.getElementById('terminalOutput');
+      const cmd = promptInput.value.trim().toLowerCase();
+      if (!cmd) return;
+
+      let res = '';
+      switch (cmd) {
+        case 'help':
+          res = 'Available commands: bio, data, frontend, skills, experience, contact, clear';
+          break;
+        case 'bio':
+          res = 'Industrial Engineer with MSc in Big Data & AI. Expert in Data Engineering pipelines & modern React frontend applications.';
+          break;
+        case 'data':
+          res = 'Databricks, PySpark, Delta Lake, Dagster, Azure/AWS Cloud, SQL, Power BI, ETL/ELT architecture.';
+          break;
+        case 'frontend':
+          res = 'React.js, Tailwind CSS, JavaScript (ES6+), SPAs, Netlify/Vercel CI/CD deployment.';
+          break;
+        case 'skills':
+          res = 'Python, Databricks, Spark, React, Tailwind, SQL, LangChain, Azure, Power BI, Dagster.';
+          break;
+        case 'experience':
+          res = 'Data Scientist & Engineer @ Repsol | MLOps & Data Engineer @ TDK Electronics | Tech Consultant & Developer @ Asia.';
+          break;
+        case 'contact':
+          res = 'Email: agustin.jorge.peraltai@gmail.com | Phone: +34 641 012 046 | Barcelona, Spain';
+          break;
+        case 'clear':
+          outputBox.innerHTML = '';
+          promptInput.value = '';
+          return;
+        default:
+          res = `Command not recognized: "${cmd}". Type 'help'.`;
+      }
+
+      const userLine = document.createElement('div');
+      userLine.className = 'text-brand-400 font-bold';
+      userLine.innerText = `ap-shell:$ ${promptInput.value}`;
+
+      const resLine = document.createElement('div');
+      resLine.className = 'text-slate-300';
+      resLine.innerText = res;
+
+      outputBox.appendChild(userLine);
+      outputBox.appendChild(resLine);
+      outputBox.scrollTop = outputBox.scrollHeight;
+      promptInput.value = '';
+    }
+
+    function openProjectModal(key) {
+      const data = projectDetails[key];
+      if (!data) return;
+
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalDescription').innerText = data.description;
+      const metricsList = document.getElementById('modalMetrics');
+      metricsList.innerHTML = '';
+      data.metrics.forEach(m => {
+        const li = document.createElement('li');
+        li.innerText = m;
+        metricsList.appendChild(li);
+      });
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function copyPhone() {
+      const tempInput = document.createElement('input');
+      tempInput.value = "+34 641 012 046";
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast('Phone number copied to clipboard!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
