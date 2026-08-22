@@ -3,11 +3,11 @@ async function verifyPassword() {
   const err = document.getElementById('passwordError');
   
   try {
-    const response = await netlifyFunctionCall(input); // O una petición fetch normal
-    
-    // Llamada directa a tu función serverless en Netlify
     const res = await fetch('/.netlify/functions/verify', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ password: input })
     });
     

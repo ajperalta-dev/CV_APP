@@ -1038,7 +1038,7 @@
     }
 
     let isEditMode = false;
-    const CV_PASSWORD = "admin"; // Default password for editing
+    // const CV_PASSWORD = "admin"; // Default password for editing
 
     function toggleEditMode() {
       if (isEditMode) {
@@ -1063,17 +1063,17 @@
       modal.classList.add('opacity-0', 'pointer-events-none');
     }
 
-    function verifyPassword() {
-      const input = document.getElementById('cvPasswordInput').value;
-      const err = document.getElementById('passwordError');
+    // function verifyPassword() {
+    //   const input = document.getElementById('cvPasswordInput').value;
+    //   const err = document.getElementById('passwordError');
       
-      if (input === CV_PASSWORD) {
-        closePasswordModal();
-        setEditMode(true);
-      } else {
-        err.classList.remove('hidden');
-      }
-    }
+    //   if (input === CV_PASSWORD) {
+    //     closePasswordModal();
+    //     setEditMode(true);
+    //   } else {
+    //     err.classList.remove('hidden');
+    //   }
+    // }
 
     function setEditMode(state) {
       isEditMode = state;
